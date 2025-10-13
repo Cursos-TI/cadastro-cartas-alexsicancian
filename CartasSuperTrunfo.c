@@ -8,9 +8,9 @@ int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
   // Declaração das variáveis com nomes descritivos
   int populacaoUm, populacaoDois, pTuristicosUm, pTuristicosDois;
-  char estadoUm, estadoDois;
-  float areaUm, areaDois, pibUm, pibDois;
-  char cidadeUm[30], cidadeDois[30];
+    char estadoUm, estadoDois;
+    float areaUm, areaDois, pibUm, pibDois, densidadeUm, densidadeDois, pibPerCapitaUm, pibPerCapitaDois;
+    char cidadeUm[30], cidadeDois[30]; 
   // Área para entrada de dados
   printf("=== Cadastro da Carta 1 ===\n");
 
@@ -68,6 +68,9 @@ int main() {
   printf("Área: %.2f km²\n", areaUm);
   printf("PIB: %.2f bilhões\n", pibUm);
   printf("Número de Pontos Turísticos: %d\n", pTuristicosUm);
+  printf("Densidade Populacional: %.2f hab/km²\n", densidadeUm);
+  printf("PIB per Capita: %.2f reais\n", pibPerCapitaUm);
+  
 
   printf("-------------------------------------------\n");
 
@@ -79,7 +82,10 @@ int main() {
   printf("Área: %.2f km²\n", areaDois);
   printf("PIB: %.2f bilhões\n", pibDois);
   printf("Número de Pontos Turísticos: %d\n", pTuristicosDois);
+  printf("Densidade Populacional: %.2f hab/km²\n", densidadeDois);
+  printf("PIB per Capita: %.2f reais\n", pibPerCapitaDois);
 
+  
   printf("\nEssas foram as cartas cadastradas.\n");
 
 return 0;
