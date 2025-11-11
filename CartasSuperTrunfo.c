@@ -6,8 +6,8 @@ int main() {
     setlocale(LC_ALL, "Portuguese");
 
     // Declaração das variáveis com nomes descritivos
-    int populacaoUm, populacaoDois, pTuristicosUm, pTuristicosDois;
-    char estadoUm, estadoDois;
+    int populacaoUm, populacaoDois, pTuristicosUm, pTuristicosDois, verify;
+    char estadoUm, estadoDois, answer;
     float areaUm, areaDois, pibUm, pibDois, densidadeUm, densidadeDois, pibPerCapitaUm, pibPerCapitaDois;
     char cidadeUm[30], cidadeDois[30]; 
     double poderUm, poderDois;
@@ -102,16 +102,56 @@ int main() {
     printf("PIB per Capita: %.2f reais\n", pibPerCapitaDois);
     printf("Super Poder: %.2f\n", poderDois);
     
-	//Verificação e demonstração de qual carta ganha em cada atributo.
-	printf("-------------------------------------------\n");
-	printf("Comparação das Cartas: \n");
-	printf("População: %d\n", populacaoUm > populacaoDois);
-	printf("Área: %d\n", areaUm > areaDois);
-	printf("PIB: %d\n", pibUm > pibDois);
-	printf("Pontos Turísticos: %d\n", pTuristicosUm > pTuristicosDois);
-	printf("Densidade Populacional: %d\n", densidadeUm > densidadeDois);
-	printf("PIB per Capita: %d\n", pibPerCapitaUm > pibPerCapitaDois);
-	printf("Super Poder: %d\n", poderUm > poderDois);
+    //Escolha de Atributo para o duelo
+    printf("Qual atributo você quer usar? \n");
+    printf("1 - População \n");
+    printf("2 - Área \n");
+    printf("3 - Densidade \n");
+    printf("4 - PIB \n");
+    printf("5 - PIB per capita \n");
+    printf("Digite o número que você deseja: ");
+    scanf("%d", &verify);
+
+	//Verificação e demonstração de qual carta ganha no duelo.
+
+    if (verify == 1){
+        if(populacaoUm > populacaoDois){
+            answer = 'A';
+        }else{
+            answer = 'B';
+        }
+    }else if (verify == 2){
+       if(areaUm > areaDois){
+            answer = 'A';
+        }else{
+            answer = 'B';
+        }
+    }else if (verify == 3){
+       if(pibUm > pibDois){
+            answer = 'A';
+        }else{
+            answer = 'B';
+        }
+    }else if (verify == 4){
+       if(densidadeUm > densidadeDois){
+            answer = 'A';
+        }else{
+            answer = 'B';
+        }
+    }else if (verify == 5){
+       if(pibPerCapitaUm > pibPerCapitaDois){
+            answer = 'A';
+        }else{
+            answer = 'B';
+        }
+    }else{
+        printf("Escolha uma opção válida \n");
+    }
+
+    printf("A carta vencedora foi: %c", answer);
+    
+    
+	
 	
 	
     
