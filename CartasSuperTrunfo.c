@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main() {
-	//Vi durante o desenvolvimento que os acentos não erão reconhecidos e pesquisando achei essa função que configura os caracteres e acentuação para os do portugues
+int main()
+{
+    // Vi durante o desenvolvimento que os acentos não erão reconhecidos e pesquisando achei essa função que configura os caracteres e acentuação para os do portugues
     setlocale(LC_ALL, "Portuguese");
 
     // Declaração das variáveis com nomes descritivos
     int populacaoUm, populacaoDois, pTuristicosUm, pTuristicosDois, verify;
     char estadoUm, estadoDois, answer;
-    float areaUm, areaDois, pibUm, pibDois, densidadeUm, densidadeDois, pibPerCapitaUm, pibPerCapitaDois;
-    char cidadeUm[30], cidadeDois[30]; 
+    float areaUm, areaDois, pibUm, pibDois, densidadeUm, densidadeDois, pibPerCapitaUm, pibPerCapitaDois, valorUm, valorDois;
+    char cidadeUm[30], cidadeDois[30], attr[20], variavel[20];
     double poderUm, poderDois;
 
     // Entrada de dados da Carta 1
@@ -55,21 +56,18 @@ int main() {
 
     printf("Quantos pontos turísticos tem nessa cidade? ");
     scanf("%d", &pTuristicosDois);
-    
-    //calculos de densidade pop. e PIB per capita e poder
-    densidadeUm = (float) populacaoUm/areaUm;
-    densidadeDois = (float) populacaoDois/areaDois;
-    
-    pibPerCapitaUm = ((float)pibUm * 1000000000)/(float)populacaoUm;
-    pibPerCapitaDois = ((float)pibDois * 1000000000)/(float)populacaoDois;
-    
-    poderUm = (float) areaUm + (float) populacaoUm + ((float) pibUm * 1000000000) + (float) pTuristicosUm + (float) pibPerCapitaUm - (float) densidadeUm;
-    poderDois = (float) areaDois + (float) populacaoDois + ((float) pibDois * 1000000000) + (float) pTuristicosDois + (float) pibPerCapitaDois - (float) densidadeDois;
-    
-    
-    //Verificação de cada variavel para decisão de qual carta é melhor
-    
-    
+
+    // calculos de densidade pop. e PIB per capita e poder
+    densidadeUm = (float)populacaoUm / areaUm;
+    densidadeDois = (float)populacaoDois / areaDois;
+
+    pibPerCapitaUm = ((float)pibUm * 1000000000) / (float)populacaoUm;
+    pibPerCapitaDois = ((float)pibDois * 1000000000) / (float)populacaoDois;
+
+    poderUm = (float)areaUm + (float)populacaoUm + ((float)pibUm * 1000000000) + (float)pTuristicosUm + (float)pibPerCapitaUm - (float)densidadeUm;
+    poderDois = (float)areaDois + (float)populacaoDois + ((float)pibDois * 1000000000) + (float)pTuristicosDois + (float)pibPerCapitaDois - (float)densidadeDois;
+
+    // Verificação de cada variavel para decisão de qual carta é melhor
 
     // Exibição dos dados
     printf("\n===========================================\n");
@@ -101,8 +99,8 @@ int main() {
     printf("Densidade Populacional: %.2f hab/km²\n", densidadeDois);
     printf("PIB per Capita: %.2f reais\n", pibPerCapitaDois);
     printf("Super Poder: %.2f\n", poderDois);
-    
-    //Escolha de Atributo para o duelo
+
+    // Escolha de Atributo para o duelo
     printf("Qual atributo você quer usar? \n");
     printf("1 - População \n");
     printf("2 - Área \n");
@@ -112,49 +110,126 @@ int main() {
     printf("Digite o número que você deseja: ");
     scanf("%d", &verify);
 
-	//Verificação e demonstração de qual carta ganha no duelo.
+    // Verificação e demonstração de qual carta ganha no duelo.
 
-    if (verify == 1){
-        if(populacaoUm > populacaoDois){
+    switch (verify)
+    {
+    case 1:
+        attr[10] = 'População';
+        if (populacaoUm > populacaoDois)
+        {
             answer = 'A';
-        }else{
+        }
+        else if (populacaoUm < populacaoDois)
+        {
             answer = 'B';
         }
-    }else if (verify == 2){
-       if(areaUm > areaDois){
+        else
+        {
+            answer = 'C';
+        }
+        break;
+    case 2:
+        attr[10] = 'Área';
+        if (areaUm > areaDois)
+        {
             answer = 'A';
-        }else{
+        }
+        else if (areaUm < areaDois)
+        {
             answer = 'B';
         }
-    }else if (verify == 3){
-       if(pibUm > pibDois){
+        else
+        {
+            answer = 'C';
+        }
+        break;
+    case 3:
+        attr[10] = 'PIB';
+        if (pibUm > pibDois)
+        {
             answer = 'A';
-        }else{
+        }
+        else if (pibUm < pibDois)
+        {
             answer = 'B';
         }
-    }else if (verify == 4){
-       if(densidadeUm > densidadeDois){
-            answer = 'A';
-        }else{
+        else
+        {
+            answer = 'C';
+        }
+        break;
+    case 4:
+        attr[10] = 'Densidade';
+        if (densidadeUm > densidadeDois)
+        {
             answer = 'B';
         }
-    }else if (verify == 5){
-       if(pibPerCapitaUm > pibPerCapitaDois){
+        else if (densidadeUm < densidadeDois)
+        {
             answer = 'A';
-        }else{
+        }
+        else
+        {
+            answer = 'C';
+        }
+        break;
+    case 5:
+        attr[10] = 'PIB per capita';
+        if (pibPerCapitaUm > pibPerCapitaDois)
+        {
+            answer = 'A';
+        }
+        else if (pibPerCapitaUm < pibPerCapitaDois)
+        {
             answer = 'B';
         }
-    }else{
-        printf("Escolha uma opção válida \n");
+        else
+        {
+            answer = 'C';
+        }
+        break;
+    default:
+        printf("Escolha uma opção válida");
+        break;
     }
 
-    printf("A carta vencedora foi: %c", answer);
-    
-    
-	
-	
-	
-    
+    printf("O duelo entre %c e %c irá começar. \n");
+    printf("O atributo usado foi: %c \n", attr);
+    printf("Os valores dos atributos são: \n");
+    if (verify == 1)
+    {
+        printf("Carta 1: %d e Carta 2: %d \n", populacaoUm, populacaoDois);
+    }
+    else if (verify == 2)
+    {
+        printf("Carta 1: %.2f e Carta 2: %.2f \n", areaUm, areaDois);
+    }
+    else if (verify == 3)
+    {
+        printf("Carta 1: %.2f e Carta 2: %.2f \n", pibUm, pibDois);
+    }
+    else if (verify == 4)
+    {
+        printf("Carta 1: %.2f e Carta 2: %.2f \n", densidadeUm, densidadeDois);
+    }
+    else if (verify == 5)
+    {
+        printf("Carta 1: %.2f e Carta 2: %.2f \n", pibPerCapitaUm, pibPerCapitaDois);
+    }
+
+    if (answer == 'A')
+    {
+        printf("A carta vencedora foi a Carta 1");
+    }
+    else if (answer == 'B')
+    {
+        printf("A carta vencedora foi a Carta 2");
+    }
+    else if (answer == 'C')
+    {
+        printf("O resultado deu EMPATE");
+    }
 
     return 0;
 }
